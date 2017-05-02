@@ -1,5 +1,20 @@
 
-* As expected, we pulled down `python:latest`.  It's a very large image, 694.3 MBs.  That's fine for playing around, but for an actual container deployment, that's laughably large.  Let's pull down a couple of other python images that are better for actual usage.  
-	* **:slim** is a tag on python that provides a "skinnied" down version of the image
-	* **:alpine** is an image based on alpine linux.  A specific distribution designed for compactness for use in containers.
+* Let's use our sample Dockerfile and create some new tagged images
+
+```
+docker build -t <your username>/imapex101_dockerfile:fun .
+docker build -t <your username>/imapex101_dockerfile:in .
+docker build -t <your username>/imapex101_dockerfile:the .
+docker build -t <your username>/imapex101_dockerfile:sun .
+
+docker images
+
+REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+<your username>/imapex101_dockerfile   fun                 b6578662ca26        34 minutes ago      371.3 MB
+<your username>/imapex101_dockerfile   in                  b6578662ca26        34 minutes ago      371.3 MB
+<your username>/imapex101_dockerfile   latest              b6578662ca26        34 minutes ago      371.3 MB
+<your username>/imapex101_dockerfile   sun                 b6578662ca26        34 minutes ago      371.3 MB
+<your username>/imapex101_dockerfile   the                 b6578662ca26        34 minutes ago      371.3 MB
+
+```
 

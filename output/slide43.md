@@ -1,7 +1,7 @@
+There is a hierarchy of objects within Docker that are worth having a solid understanding of.
 
-## Go Do it Exercises
-
-* Create a free account on Quay.io
-* Create a public registry called demo and push up the sample Docker container created above.  
-* Hint... you'll need to work out how to login using the docker cli
+* Registry
+	* User/Org/Account
+		* Repository
+			* Tagged Image
 

@@ -424,7 +424,7 @@ Successfully built afde9a78e299
 * Run the final container version to execute the program.  We use `-d` to run our container in the background and print out the container id
 
 ```
-docker run -d --name dockerfile <your username>/imapex101_dockerfile:latest
+docker run -d --name CoolApp <your username>/imapex101_dockerfile:latest
 
 8b5b52eaa9a7c838c77bed791315a42ac7270e714c5fcd3ffbdbc49ef94b4316
 ```
@@ -440,7 +440,7 @@ docker run -d --name dockerfile <your username>/imapex101_dockerfile:latest
 docker ps
 
 CONTAINER ID        IMAGE                                         COMMAND                  CREATED              STATUS              PORTS               NAMES
-8b5b52eaa9a7        <your username>/imapex101_dockerfile:latest   "/root/hello_world.sh"   About a minute ago   Up About a minute   80/tcp              dockerfile
+8b5b52eaa9a7        <your username>/imapex101_dockerfile:latest   "/root/hello_world.sh"   About a minute ago   Up About a minute   80/tcp              CoolApp
 ```
 
 [item]: # (/slide)
@@ -450,7 +450,7 @@ CONTAINER ID        IMAGE                                         COMMAND       
 ## Docker CLI: docker logs
 
 ```
-docker logs dockerfile
+docker logs CoolApp
 
 Hello World
 Hello World
@@ -472,7 +472,7 @@ Hello World
 *  you can stop and start the same container like this
 
 ```
-$ docker stop dockerfile
+$ docker stop CoolApp
 ```
 
 [item]: # (/slide)
@@ -485,7 +485,7 @@ $ docker stop dockerfile
 $ docker ps -a
 
 CONTAINER ID        IMAGE                                         COMMAND                  CREATED             STATUS                        PORTS               NAMES
-8b5b52eaa9a7        <your username>/imapex101_dockerfile:latest   "/root/hello_world.sh"   4 minutes ago       Exited (137) 14 seconds ago                       dockerfile
+8b5b52eaa9a7        <your username>/imapex101_dockerfile:latest   "/root/hello_world.sh"   4 minutes ago       Exited (137) 14 seconds ago                       CoolApp
 ```
 
 [item]: # (/slide)
@@ -495,12 +495,12 @@ CONTAINER ID        IMAGE                                         COMMAND       
 * Start it back up
 
 ```
-$ docker start dockerfile
+$ docker start CoolApp
 
 $ docker ps
 
 CONTAINER ID        IMAGE                                         COMMAND                  CREATED             STATUS              PORTS               NAMES
-8b5b52eaa9a7        <your username>/imapex101_dockerfile:latest   "/root/hello_world.sh"   5 minutes ago       Up 2 seconds        80/tcp              dockerfile
+8b5b52eaa9a7        <your username>/imapex101_dockerfile:latest   "/root/hello_world.sh"   5 minutes ago       Up 2 seconds        80/tcp              CoolApp
 
 ```
 
@@ -573,53 +573,25 @@ When leveraging a registry other than hub.docker.com, you must include it in all
 
 [item]: # (slide)
 
-## Experiments
+## Demo
 
-Let's see what it looks like to use a registry other than hub.docker.com.  We'll be using the image [quay.io/repository/hpreston/demo](https://quay.io/repository/hpreston/demo)
+Let's see what it looks like to use a registry other than hub.docker.com.  
 
-[item]: # (/slide)
-
-[item]: # (slide)
-
-* Pull down the image
-
-```
-docker pull quay.io/hpreston/demo:latest
-
-docker images
-REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
-quay.io/hpreston/demo           latest              afde9a78e299        58 minutes ago      371.3 MB
-
-```
+* Public Registry: [Quay](https://quay.io)
+* Trusted Registry: [containers.cisco.com](https://containers.cisco.com)
 
 [item]: # (/slide)
 
 [item]: # (slide)
 
-* Run a container based on the image
+## Steps
 
-```
-docker run -d --name quaydemo quay.io/hpreston/demo:latest
-
-docker ps
-CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS               NAMES
-23a23fcb3d26        quay.io/hpreston/demo:latest   "/root/hello_world.sh"   3 seconds ago       Up 2 seconds        80/tcp              quaydemo
-```
-
-[item]: # (/slide)
-
-[item]: # (slide)
-
-* Check the logs
-
-```
-docker logs quaydemo
-
-Hello World
-Hello World
-Hello World
-Hello World
-```
+1. Log into quay.io
+2. Log into containers.cisco.com 
+3. Pull down image from quay.io `docker pull quay.io/hpreston/demo:latest`
+4. Docker Login to containers.cisco.com
+5. Tag images for containers.cisco.com `docker tag quay.io/hpreston/demo:latest containers.cisco.com/hapresto/demo:latest`
+6. Push to containers.cisco.com `docker push containers.cisco.com/hapresto/demo:latest`
 
 [item]: # (/slide)
 
@@ -828,7 +800,7 @@ The simplest solution are Automated Build repos.  These are repositories that ar
 The second option is to rely on some other mechanism to track code changes, build new images, and publish them to the registry.  These tasks, and more, are the purpose of a CICD tool.  CICD is covered in Module 4.  
 
 [item]: # (slide)
-## Experiments
+## Demo
 
 * Walk through creating a GitHub repo for the dockerfile example in this module
 * Create an automated build repo on docker hub
@@ -840,14 +812,210 @@ The second option is to rely on some other mechanism to track code changes, buil
 ## Links
 
 * [https://docs.docker.com/docker-hub/builds/](https://docs.docker.com/docker-hub/builds/)
+
 [item]: # (/slide)
+
 [item]: # (slide)
+
 ## Why do we care
 
 As we build our applications and demos, we'll need a way to easily make the updates and changes available for distribution.  Though we could manually build, and push from our laptops during development, these are manual steps that take time away from the actual coding.  Further... no one actually building applications works that manually.  We need to be operating like developers.  
+
 [item]: # (/slide)
+
 [item]: # (slide)
+
 ## Go Do it Exercises
 
 Automated builds are not just available for Docker Hub, Quay.io offers them as well.  Create an automated build on Quay.io for your GitHub project.  
+
 [item]: # (/slide)
+
+[item]: # (slide)
+
+# Containerize an ACI Dashboard 
+
+**Goal**
+
+We will use the skills we have to create Docker images, and build a Dockerfile that will deploy an ACI Health Dashboard.  
+
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+## Pre-Reqs and Info
+
+* Application Code: [hpreston/demo\_aci\_health\_dashboard](https://github.com/hpreston/demo_aci_health_dashboard)
+    * Provides a Health Dashboard for Applications Profiles in a Tenant, and access to fault information
+    * Python 2.7 Application
+    * Leverages Cobra SDK
+* egg files for Cobra
+    * Cobra is **NOT** available via standard pip install
+    * Hosted for this lab on internal Cisco Server
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+# Let's Get Started!
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+## Setup Build Directory
+
+```bash
+mkdir dockerlab_acidash
+cd dockerlab_acidash
+
+# Get Cobra install files 
+wget http://10.130.26.30/acicobra-2.1_1h-py2.7.egg
+wget http://10.130.26.30/acimodel-2.1_1h-py2.7.egg
+
+# Create empty Dockerfile
+touch Dockerfile
+```
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+## Dockerfile: Create Base
+
+```
+FROM python:2.7-alpine
+MAINTAINER Your Name <your@email.address>
+
+# Install basic utilities
+RUN apk add -U \
+        ca-certificates \
+        git \
+  && rm -rf /var/cache/apk/* \
+  && pip install --no-cache-dir \
+          setuptools \
+          wheel
+```
+
+## Build Docker Image 
+
+```bash
+docker build -t dockeruser/demo_acidash:latest .
+```
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+## Dockerfile: Install Cobra
+
+```
+# Copy ACI Cobra SDK into container
+ADD *.egg /tmp/
+
+# Install Cobra and cleanup 
+RUN easy_install -Z /tmp/acicobra-2.1_1h-py2.7.egg \
+    && easy_install -Z /tmp/acimodel-2.1_1h-py2.7.egg \
+    && rm -f /tmp/*.egg
+```
+
+## Build Docker Image 
+
+```bash
+docker build -t dockeruser/demo_acidash:latest .
+```
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+## Dockerfile: Get Application Code
+
+```
+# Get Application Code
+RUN git clone https://github.com/hpreston/demo_aci_health_dashboard /demo_aci_health_dashboard
+```
+
+## Build Docker Image 
+
+```bash
+docker build -t dockeruser/demo_acidash:latest .
+```
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+## Dockerfile: Install Application Requirements 
+
+```
+# Application Ports
+# Put this after MAINTAINER
+EXPOSE 5000
+
+# Install Python requirements
+RUN pip install -r /demo_aci_health_dashboard/requirements.txt
+
+# Prep Required Environment Variables
+# Target Hank's Lab... can override with another when running
+ENV APIC_URL="https://dmz-apic.reqdemo.com" \
+    APIC_LOGIN="admin" \
+    APIC_PASSWORD="ACIsim12345" \
+    APIC_TENANT="SnV"
+```
+
+## Build Docker Image 
+
+```bash
+docker build -t dockeruser/demo_acidash:latest .
+```
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+## Dockerfile: Run Application 
+
+```
+# Run Application 
+CMD cd /demo_aci_health_dashboard && \
+    python run.py
+```
+
+## Build Docker Image 
+
+```bash
+docker build -t dockeruser/demo_acidash:latest .
+```
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+## Run Docker Container
+
+```bash
+docker run --name demo_acidash \
+           -itp 15000:5000 \
+           dockeruser/demo_acidash:latest
+```
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+## Test App!  
+
+* Open `http://localhost:15000` in a browser
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+![](http://imapex.io/images/imapex_standing_text_sm.png)
+
+Done!  
+
+[item]: # (/slide)
+

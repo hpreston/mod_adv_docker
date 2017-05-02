@@ -1,11 +1,9 @@
+## Links
 
-* Run a container based on the image
-
-```
-docker run -d --name quaydemo quay.io/hpreston/demo:latest
-
-docker ps
-CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS               NAMES
-23a23fcb3d26        quay.io/hpreston/demo:latest   "/root/hello_world.sh"   3 seconds ago       Up 2 seconds        80/tcp              quaydemo
-```
+* [https://mesosphere.com/blog/2015/10/14/docker-registries-the-good-the-bad-the-ugly/](https://mesosphere.com/blog/2015/10/14/docker-registries-the-good-the-bad-the-ugly/)
+* [https://aws.amazon.com/ecr/](https://aws.amazon.com/ecr/)
+* [https://docs.docker.com/docker-trusted-registry/](https://docs.docker.com/docker-trusted-registry/)
+* [https://hub.docker.com/_/registry/](https://hub.docker.com/_/registry/)
+* [https://quay.io](https://quay.io)
+* [Google Container Registry](https://cloud.google.com/container-registry/)
 

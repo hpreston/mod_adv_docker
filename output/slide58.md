@@ -1,1 +1,4 @@
-# Section 4: Manual vs Auto-Build Repos
+## Links
+
+* [https://docs.docker.com/docker-hub/builds/](https://docs.docker.com/docker-hub/builds/)
+

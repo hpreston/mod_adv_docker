@@ -1,4 +1,5 @@
 
-* Note how each of the tags, actually are the same IMAGE ID.  This is because Docker is smart enough to realize they are the exact same image, and being efficient, it just reuses the same underlying image.  
-* Having the same image, with multiple tags is a common aspect of docker.  
+## Why do we care
+
+To really use Docker effectively, you must understand the concept of tagging.  Not only to make sure you are consuming containers as you intend, but also so you can setup your own repositories appropriately and as consumers will expect.  
 

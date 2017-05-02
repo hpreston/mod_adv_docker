@@ -2,7 +2,7 @@
 ## Docker CLI: docker logs
 
 ```
-docker logs dockerfile
+docker logs CoolApp
 
 Hello World
 Hello World

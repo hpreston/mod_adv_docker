@@ -1,20 +1,6 @@
 
-* Let's use our sample Dockerfile and create some new tagged images
+## Links
 
-```
-docker build -t <your username>/imapex101_dockerfile:fun .
-docker build -t <your username>/imapex101_dockerfile:in .
-docker build -t <your username>/imapex101_dockerfile:the .
-docker build -t <your username>/imapex101_dockerfile:sun .
-
-docker images
-
-REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
-<your username>/imapex101_dockerfile   fun                 b6578662ca26        34 minutes ago      371.3 MB
-<your username>/imapex101_dockerfile   in                  b6578662ca26        34 minutes ago      371.3 MB
-<your username>/imapex101_dockerfile   latest              b6578662ca26        34 minutes ago      371.3 MB
-<your username>/imapex101_dockerfile   sun                 b6578662ca26        34 minutes ago      371.3 MB
-<your username>/imapex101_dockerfile   the                 b6578662ca26        34 minutes ago      371.3 MB
-
-```
+* [https://medium.com/@mccode/the-misunderstood-docker-tag-latest-af3babfd6375#.2gilq1dnl](https://medium.com/@mccode/the-misunderstood-docker-tag-latest-af3babfd6375#.2gilq1dnl)
+* [http://www.carlboettiger.info/2014/08/29/docker-notes.html](http://www.carlboettiger.info/2014/08/29/docker-notes.html)
 

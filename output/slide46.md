@@ -1,5 +1,3 @@
 
-What we commonly think of as a Docker container would better be described as a _specificly **tagged image**, contained within a **repository**, managed by a **user or organization**, hosted on a particular **registry**_
-
-To be accurate, *container* is actually an instance of a tagged image that is running, or is currently stopped.  
+The tag **:latest** is a well understood standard in Docker to indicate a "default" image.  If you do not specify a particular tag when building or pulling, latest will be assumed.  It is up to the owner of the repository to manage what image is provided by **:latest**, and in fact it is possible to have a repository lacking a **:latest** tag.  That is considered bad practice and should be avoided.  Also remember that **:latest** rarely actually indicates the most recently built container... 	
 

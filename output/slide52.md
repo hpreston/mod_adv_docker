@@ -1,14 +1,4 @@
 
-```
-docker pull python:slim
-docker pull python:alpine
-
-docker images
-
-REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
-python                          alpine              0298711f3095        9 days ago          73.04 MB
-python                          slim                bdec2259b96a        9 days ago          221.3 MB
-python                          latest              9152ad50a7f9        9 days ago          694.3 MB
-
-```
+* Note how each of the tags, actually are the same IMAGE ID.  This is because Docker is smart enough to realize they are the exact same image, and being efficient, it just reuses the same underlying image.  
+* Having the same image, with multiple tags is a common aspect of docker.  
 

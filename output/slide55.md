@@ -1,6 +1,12 @@
 
-## Links
+## Go Do it Exercises
 
-* [https://medium.com/@mccode/the-misunderstood-docker-tag-latest-af3babfd6375#.2gilq1dnl](https://medium.com/@mccode/the-misunderstood-docker-tag-latest-af3babfd6375#.2gilq1dnl)
-* [http://www.carlboettiger.info/2014/08/29/docker-notes.html](http://www.carlboettiger.info/2014/08/29/docker-notes.html)
+* Look at some commonly used repositories and see how they leverage tags.  Some examples to check are
+	* MySQL
+	* CentOS
+	* Debian
+	* nginx
+	* Wordpress
+* Pull down CentOS images for version 6 and 7 and start containers based on each
+* Think about how you'll use tags with your demo applications... be prepared to discuss and defend your ideas
 
